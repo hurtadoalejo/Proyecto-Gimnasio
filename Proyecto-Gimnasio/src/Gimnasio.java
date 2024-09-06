@@ -93,4 +93,39 @@ public class Gimnasio {
         promedio = promedio / contador;
         return promedio;
     }
+
+    public Collection<Miembro> obtenerMenores(){
+        Collection<Miembro> menoresEdad = new LinkedList<>();
+        for (Miembro prueba : listaMiembros) {
+            if (prueba.getEdad() < 18) {
+                menoresEdad.add(prueba);
+            }
+        }
+        return menoresEdad;
+    }
+
+    public void eliminarNombresVocales(Miembro miembro){
+        if (contarVocales(miembro.getNombre()) > 2) {
+            listaMiembros.remove(miembro);
+        }
+    }
+
+    public int contarVocales(String nombre){
+        int vocales = 0;
+        for(int a = 0; a < nombre.length(); a++){
+            char momentaneo = nombre.charAt(a);
+            if (esVocal(momentaneo)) {
+                vocales += 1;
+            }
+        }
+        return vocales;
+    }
+
+    public boolean esVocal(char momentaneo){
+        boolean decision = false;
+        if (momentaneo == 'a' || momentaneo == 'e' || momentaneo == 'i' || momentaneo == 'o' || momentaneo == 'u') {
+            decision = true;
+        }
+        return decision;
+    }
 }
