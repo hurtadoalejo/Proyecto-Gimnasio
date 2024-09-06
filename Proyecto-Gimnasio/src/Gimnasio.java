@@ -32,6 +32,52 @@ public class Gimnasio {
         return listaEntrenadores;
     }
 
+    public void agregarMiembro(Miembro miembro){
+        if (verificarMiembro(miembro.getId())) {
+            listaMiembros.add(miembro);
+        }
+    }
+    public boolean verificarMiembro(String id){
+        boolean decision = true;
+        for (Miembro prueba : listaMiembros) {
+            if (prueba.getId().equals(id)) {
+                decision = false;
+            }
+        }
+        return decision;
+    }
+    public void eliminarMiembro(String id){
+        for (Miembro prueba : listaMiembros) {
+            if (prueba.getId().equals(id)) {
+                listaMiembros.remove(prueba);
+                break;
+            }
+        }
+    }
+
+    public void agregarEntrenador(Entrenador entrenador){
+        if (verificarEntrenador(entrenador.getTelefono())) {
+            listaEntrenadores.add(entrenador);
+        }
+    }
+    public boolean verificarEntrenador(String telefono){
+        boolean decision = true;
+        for (Entrenador prueba : listaEntrenadores) {
+            if (prueba.getTelefono().equals(telefono)) {
+                decision = false;
+            }
+        }
+        return decision;
+    }
+    public void eliminarEntrenador(String telefono){
+        for (Entrenador prueba : listaEntrenadores) {
+            if (prueba.getTelefono().equals(telefono)) {
+                listaEntrenadores.remove(prueba);
+                break;
+            }
+        }
+    }
+
     public String toString() {
         return "Gimnasio [nombre=" + nombre + ", listaMiembros=" + listaMiembros + ", listaEntrenadores="
                 + listaEntrenadores + "]";
